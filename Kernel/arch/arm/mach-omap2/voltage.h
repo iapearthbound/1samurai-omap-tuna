@@ -139,6 +139,8 @@ struct omap_voltage_notifier {
  * @sr_efuse_offs:	The offset of the efuse register(from system
  *			control module base address) from where to read
  *			the n-target value for the smartreflex module.
+ * @sr_bypass:		Bypass flag for smartreflex. This value tells
+ *			smartreflex to skip during calibration.
  * @sr_errminlimit:	Error min limit value for smartreflex. This value
  *			differs at differnet opp and thus is linked
  *			with voltage.
@@ -155,6 +157,7 @@ struct omap_volt_data {
 	u32	volt_dynamic_nominal;
 	u32	volt_margin;
 	u32	sr_efuse_offs;
+	u32	sr_bypass;
 	u8	sr_errminlimit;
 	u8	vp_errgain;
 	int	abb_type;
@@ -181,11 +184,11 @@ struct omap_volt_data {
 #define OMAP3630_VP2_VLIMITTO_VDDMAX	1200000
 
 #define OMAP4_VP_MPU_VLIMITTO_VDDMIN	830000
-#define OMAP4_VP_MPU_VLIMITTO_VDDMAX	1410000
+#define OMAP4_VP_MPU_VLIMITTO_VDDMAX	1510000
 #define OMAP4_VP_IVA_VLIMITTO_VDDMIN	830000
-#define OMAP4_VP_IVA_VLIMITTO_VDDMAX	1260000
+#define OMAP4_VP_IVA_VLIMITTO_VDDMAX	1410000
 #define OMAP4_VP_CORE_VLIMITTO_VDDMIN	830000
-#define OMAP4_VP_CORE_VLIMITTO_VDDMAX	1200000
+#define OMAP4_VP_CORE_VLIMITTO_VDDMAX	1300000
 
 #define OMAP4_VP_CONFIG_ERROROFFSET	0x00
 #define OMAP4_VP_VSTEPMIN_VSTEPMIN	0x01
