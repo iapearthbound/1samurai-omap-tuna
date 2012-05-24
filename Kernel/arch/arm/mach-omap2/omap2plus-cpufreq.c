@@ -44,13 +44,11 @@
 
 #include "dvfs.h"
 
-#ifdef CONFIG_VOLTAGE_CONTROL
 #include "smartreflex.h"
 
 #define MIN_OMAP4460_VDD_CORE_OPP50_UV		 875000
 #define MIN_OMAP4460_VDD_CORE_OPP100_UV		1000000
 #define MIN_OMAP4460_VDD_CORE_OPP100_OV_UV	1100000
-#endif
 
 #ifdef CONFIG_SMP
 struct lpj_info {
@@ -568,7 +566,6 @@ struct freq_attr omap_cpufreq_attr_screen_off_freq = {
 	.store = store_screen_off_freq,
 };
 
-#ifdef CONFIG_VOLTAGE_CONTROL
 /*
  * OMAP4 MPU voltage control via cpufreq by Michael Huang (coolbho3k)
  *
@@ -719,14 +716,11 @@ static struct freq_attr omap_uv_mv_table = {
 	.show = show_uv_mv_table,
 	.store = store_uv_mv_table,
 };
-#endif
 
 static struct freq_attr *omap_cpufreq_attr[] = {
 	&cpufreq_freq_attr_scaling_available_freqs,
 	&omap_cpufreq_attr_screen_off_freq,
-#ifdef CONFIG_VOLTAGE_CONTROL
 	&omap_uv_mv_table,
-#endif
 	NULL,
 };
 
