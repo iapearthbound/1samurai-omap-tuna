@@ -499,6 +499,9 @@ static struct regulator_init_data tuna_vaux1 = {
 		.valid_modes_mask	= REGULATOR_MODE_NORMAL
 					| REGULATOR_MODE_STANDBY,
 		.valid_ops_mask	 =	REGULATOR_CHANGE_MODE
+#ifdef CONFIG_OMAP_REGULATOR_VOLTCHANGE
+					| REGULATOR_CHANGE_VOLTAGE
+#endif
 					| REGULATOR_CHANGE_STATUS,
 		.state_mem = {
 			.disabled	= true,

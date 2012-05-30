@@ -123,6 +123,20 @@ config CPU_FREQ_DEFAULT_GOV_HOTPLUG
 	  the help section of the driver. Fallback governor will be the
 	  performance governor.
 
+config CPU_FREQ_DEFAULT_GOV_LAZY
+	bool "lazy"
+	select CPU_FREQ_GOV_LAZY
+	select CPU_FREQ_GOV_PERFORMANCE
+	help
+	  Use the CPUFreq governor 'lazy' as default.
+
+config CPU_FREQ_DEFAULT_GOV_WHEATLEY
+	bool "wheatley"
+	select CPU_FREQ_GOV_WHEATLEY
+	select CPU_FREQ_GOV_PERFORMANCE
+	help
+	  Use the CPUFreq governor 'wheatley' as default.
+
 config CPU_FREQ_DEFAULT_GOV_SAMURAI
         bool "samurai"
         select CPU_FREQ_GOV_SAMURAI
@@ -133,35 +147,7 @@ config CPU_FREQ_DEFAULT_GOV_SAMURAI
           loading your cpufreq low-level hardware driver.
           Be aware that not all cpufreq drivers support the samurai
           governor. If unsure have a look at the help section of the
-          driver. Fallback governor will be the performance governor.
-
-config CPU_FREQ_DEFAULT_GOV_WHEATLEY
-	bool "wheatley"
-	select CPU_FREQ_GOV_WHEATLEY
-	select CPU_FREQ_GOV_PERFORMANCE
-	help
-	  Use the CPUFreq governor 'wheatley' as default.
-
-config CPU_FREQ_DEFAULT_GOV_LULZACTIVE
-	bool "lulzactive"
-	select CPU_FREQ_GOV_LULZACTIVE
-	select CPU_FREQ_GOV_INTERACTIVE
-	help
-	  Use the CPUFreq governor 'lulzactive' as default.
-
-config CPU_FREQ_DEFAULT_GOV_SMARTASS2
-	bool "smartass2"
-	select CPU_FREQ_GOV_SMARTASS2
-	select CPU_FREQ_GOV_INTERACTIVE
-	  help
-	  Use the CPUFreq governor 'smartass2' as default.
-
-config CPU_FREQ_DEFAULT_GOV_LAZY
-	bool "lazy"
-	select CPU_FREQ_GOV_LAZY
-	select CPU_FREQ_GOV_PERFORMANCE
-	help
-	  Use the CPUFreq governor 'lazy' as default.
+          driver. Fallback governor will be the performance
 
 endchoice
 
@@ -266,26 +252,12 @@ config CPU_FREQ_GOV_CONSERVATIVE
 
 	  If in doubt, say N.
 
-config CPU_FREQ_GOV_WHEATLEY
-	tristate "'wheatley' cpufreq governor"
-	depends on CPU_FREQ
-
-config CPU_FREQ_GOV_LULZACTIVE
-	tristate "'lulzactive' cpufreq governor"
-	depends on CPU_FREQ
-	help
-	  'lulzactive' - a new interactive governor by Tegrak!
-
-	  If in doubt, say N.
-
-config CPU_FREQ_GOV_SMARTASS2
-	tristate "'smartassV2' cpufreq governor"
-	depends on CPU_FREQ
-	help
-	  'smartassV2' - a "smart" governor
-
 config CPU_FREQ_GOV_LAZY
 	tristate "'lazy' cpufreq governor"
+	depends on CPU_FREQ
+
+config CPU_FREQ_GOV_WHEATLEY
+	tristate "'wheatley' cpufreq governor"
 	depends on CPU_FREQ
 
 config CPU_FREQ_GOV_SAMURAI
